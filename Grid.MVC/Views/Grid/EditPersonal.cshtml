@@ -1,0 +1,38 @@
+﻿@model Grid.MVC.Models.PersonalWithAddressAndCountry
+@{
+    ViewBag.Title = "EditPersonal";
+}
+
+<h2>EditPersonal</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="input-group">
+        <span class="input-group-addon" id="text_name"><i class="glyphicon glyphicon-user"></i></span>
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "Name", aria_describedby = "text_name" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="text_surname"><i class="glyphicon glyphicon-user"></i></span>
+        @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", placeholder = "Surname", aria_describedby = "text_surname" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="text_age"><i class="glyphicon glyphicon-time"></i></span>
+        @Html.TextBoxFor(m => m.Age, new { @class = "form-control", placeholder = "Age", aria_describedby = "text_age" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="text_address"><i class="glyphicon glyphicon-globe"></i></span>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control", placeholder = "Address", aria_describedby = "text_address" })
+    </div>
+    <br />
+    <div class="input-group">
+        <span class="input-group-addon" id="text_country"><i class="glyphicon glyphicon-globe"></i></span>
+        @Html.DropDownListFor(m => m.Country.Id, (List<SelectListItem>)ViewBag.Countries, new { @class = "form-control", aria_describedby = "text_country" })
+    </div>
+    <br />
+
+    <input type="submit" class="btn btn-success" value="Save" />
+    @Html.HiddenFor(m => m.Id)
+}

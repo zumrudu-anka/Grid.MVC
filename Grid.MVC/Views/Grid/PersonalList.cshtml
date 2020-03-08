@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Grid.MVC.Models.Personal>
+@using GridMvc.Html
+@{
+    ViewBag.Title = "PersonalList";
+}
+
+<h2>PersonalList</h2>
+
+@Html.ActionLink("Add", "AddPersonal", "Grid", null, new { @class = "btn btn-primary" })
+
+@Html.Grid(Model).Columns(column => {
+    column.Add(m => m.Name).Titled("Name").Sortable(true).Filterable(true);
+    column.Add(m => m.Surname).Titled("Surname").Sortable(true).Filterable(true);
+    column.Add(m => m.Age).Titled("Age").Sortable(true).Filterable(true);
+    column.Add(m => m.Address.Country.Name).Titled("Country").Sortable(true).Filterable(true);
+    column.Add(m => m.Address.Name).Titled("Address").Sortable(true).Filterable(true);
+    column.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(o => Html.ActionLink("Edit", "EditPersonal", "Grid", new { id = o.Id }, new { @class = "btn btn-warning" }));
+    column.Add()
+    .Encoded(false)
+    .Sanitized(false)
+    .SetWidth(30)
+    .RenderValueAs(o => Html.ActionLink("Delete", "DeletePersonal", "Grid", new { id = o.Id }, new { @class = "btn btn-danger" }));
+}).WithPaging(10)

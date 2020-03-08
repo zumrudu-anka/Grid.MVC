@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Grid.MVC.Models.Personal>
+@{
+    ViewBag.Title = "ListPersonals";
+}
+
+<h2 style="text-align:center">Personal List</h2>
+
+<table>
+    <thead>
+        <tr style="border:1px solid black">
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Country</th>
+            <th>Address</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var personal in Model)
+        {
+        <tr>
+            <td>@personal.Name</td>
+            <td>@personal.Surname</td>
+            <td>@personal.Age</td>
+            <td>@personal.Address.Country.Name</td>
+            <td>@personal.Address.Name</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
